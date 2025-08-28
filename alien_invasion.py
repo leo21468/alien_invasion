@@ -3,6 +3,7 @@ import sys
 
 from settings import Settings
 from ship import Ship
+import game_functions as gf
 
 import pygame
 
@@ -18,15 +19,7 @@ def run_game():
     # main loop of the game
     while True:
 
-        # monitor events from the keyboard and mouse
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: # click the close window button
-                sys.exit()
-        
-        screen.fill(ai_settings.bg_color) # fill the screen with the background color
-        ship.blitme()
-
-        # make the most recently drawn surface visible (keep updating)
-        pygame.display.flip()
+        gf.check_events(ship)
+        gf.update_screen(ai_settings, screen, ship)
 
 run_game()
