@@ -2,6 +2,7 @@
 import sys
 
 from settings import Settings
+from ship import Ship
 
 import pygame
 
@@ -12,6 +13,8 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height)) # a surface element, every time the screen is updated in a loop, it is redrawn
     pygame.display.set_caption("Alien Invasion")
 
+    ship = Ship(screen)
+
     # main loop of the game
     while True:
 
@@ -21,6 +24,7 @@ def run_game():
                 sys.exit()
         
         screen.fill(ai_settings.bg_color) # fill the screen with the background color
+        ship.blitme()
 
         # make the most recently drawn surface visible (keep updating)
         pygame.display.flip()
