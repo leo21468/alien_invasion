@@ -14,7 +14,7 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height)) # a surface element, every time the screen is updated in a loop, it is redrawn
     pygame.display.set_caption("Alien Invasion")
 
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
 
     # main loop of the game
     while True:
