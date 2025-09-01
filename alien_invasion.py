@@ -24,6 +24,7 @@ def run_game():
 
         gf.check_events(ai_settings, screen, ship, bullets) # need to give information to bullets
         ship.update() # don't forget to update the ship's position
+        gf.update_bullets(bullets)
         gf.update_screen(ai_settings, screen, ship, bullets)
 
 run_game()
