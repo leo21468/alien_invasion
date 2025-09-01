@@ -3,6 +3,7 @@ import sys
 
 from settings import Settings
 from ship import Ship
+from pygame.sprite import Group
 import game_functions as gf
 
 import pygame
@@ -15,11 +16,14 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
 
     ship = Ship(ai_settings, screen)
+    # create a group saving bullets, it's like a list, but offering more functionality
+    bullets = Group() # if we create a group in the loop, it will be too slow
 
     # main loop of the game
     while True:
 
-        gf.check_events(ship)
-        gf.update_screen(ai_settings, screen, ship)
+        gf.check_events(ai_settings, screen, ship, bullets) # need to give information to bullets
+        ship.update() # don't forget to update the ship's position
+        gf.update_screen(ai_settings, screen, ship, bullets)
 
 run_game()
